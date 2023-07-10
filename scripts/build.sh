@@ -8,7 +8,7 @@ env >/tmp/build_args
 echo "--build-arg \""$(cat /tmp/build_args | sed -z 's/\n/" --build-arg "/g')"IGNORE_VAR=IGNORE_VAR\"" >/tmp/build_args
 BUILD_ARGS=$(cat /tmp/build_args)
 echo $IMAGE_NAME
-COMMAND="docker build -t $FULL_IMAGE_NAME -t $IMAGE_NAME:latest -f $DOCKERFILE $BUILD_ARGS --no-cache ."
+COMMAND="docker build -t $FULL_IMAGE_NAME -t $IMAGE_NAME:latest $BUILD_ARGS --no-cache ."
 /bin/bash -c "$COMMAND"
 echo $IMAGE_NAME
 docker push $IMAGE_NAME:latest
